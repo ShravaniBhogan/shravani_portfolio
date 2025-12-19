@@ -12,7 +12,7 @@ const projectsData = [
     title: "Personal Portfolio Website",
     desc: "Designed and developed a highly interactive portfolio featuring modular component architecture, complex CSS animations, and a fully responsive layout.",
     img: portfolio, 
-    link: "https://github.com/yourusername/portfolio",
+    link: "https://github.com/ShravaniBhogan/shravani_portfolio",
     tech: ["React", "Framer Motion", "CSS"]
     // No demo link needed since they are already here!
   },
@@ -20,7 +20,7 @@ const projectsData = [
     title: "Cine-Match",
     desc: "CineMatch is an intelligent content-based movie recommendation system that suggests similar films using NLP-powered feature vectors.",
     img: cineImg,
-    link: "https://github.com/yourusername/cine-match",
+    link: "https://github.com/ShravaniBhogan/cine-match",
     demo: "https://cine-match-nugvymk4zmdsapbuyojvjj.streamlit.app/",
     tech: ["Python", "Streamlit", "Scikit-Learn", "NumPy", "Pandas"]
   },
