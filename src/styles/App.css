@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* ================= THEME VARIABLES ================= */
+:root {
+  /* Light Theme (Default) */
+  --bg-color: #fdfbf7;
+  --primary: #b5eadd;
+  --secondary: #ffdac1;
+  --accent: #c7ceea;
+  --text-main: #4a4a4a;
+  --text-light: #888888;
+  --glass: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.9);
+  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+[data-theme='dark'] {
+  /* Dark Theme */
+  --bg-color: #0f0c29;
+  --primary: #00f3ff;
+  --secondary: #ff007f;
+  --accent: #bc13fe;
+  --text-main: #f0f0f0;
+  --text-light: #a0a0a0;
+  --glass: rgba(16, 21, 50, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Smooth Transition for Theme Toggle */
+body, .glass-card, .navbar, .btn, .nav-links a, h1, h2, p {
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ================= GLOBAL RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* ================= BACKGROUND BLOBS ================= */
+.background-blobs {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100vh;
+  z-index: -1; overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  filter: blur(80px);
+  opacity: 0.6;
+  animation: float 10s infinite ease-in-out;
+}
+
+.blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: var(--primary); }
+.blob-2 { bottom: -10%; right: -10%; width: 400px; height: 400px; background: var(--secondary); }
+.blob-3 { top: 40%; left: 40%; width: 300px; height: 300px; background: var(--accent); }
+
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(20px, 40px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ================= COMPONENTS ================= */
+
+/* Glass Card */
+.glass-card {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--glass); /* CHANGED: Uses variable for Dark Mode support */
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-main);
+  margin-left: 2rem;
+  font-weight: 600;
+  font-size: 1.0rem;
+}
+
+.nav-links a:hover {
+  color: var(--secondary); /* Uses theme color (Peach/Pink) */
+}
+
+/* Buttons */
+.btn {
+  padding: 12px 24px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 4px 15px rgba(199, 206, 234, 0.5);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(199, 206, 234, 0.7);
+}
+
+.btn-demo {
+  background: var(--secondary);
+  color: #4a4a4a;
+  box-shadow: 0 4px 15px rgba(255, 218, 193, 0.5);
+  display: flex; align-items: center; gap: 5px;
+}
+
+.btn-demo:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 218, 193, 0.8);
+}
+
+/* ================= PROJECT GRID LAYOUT ================= */
+
+.project-grid {
+  display: grid;
+  /* FORCE 3 Columns */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* !!! THIS WAS MISSING IN YOUR CODE !!! */
+/* This forces images to fit inside the card so the grid doesn't break */
+.project-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+}
+
+/* Tablet View (2 Columns) */
+@media (max-width: 1024px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile View (1 Column) */
+@media (max-width: 768px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .navbar { flex-direction: column; gap: 1rem; }
+  .nav-links { display: flex; gap: 1rem; margin-left: 0; }
+  .nav-links a { margin-left: 0; }
+  h1 { font-size: 2rem; }
+}
+
+/* Typography */
+h1 { font-size: 3rem; margin-bottom: 1rem; color: var(--text-main); }
+h2 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-main); }
+p { line-height: 1.6; color: var(--text-main); }
+
+.page-container {
+  padding: 2rem 5%;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
